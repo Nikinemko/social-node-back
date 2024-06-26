@@ -1,4 +1,5 @@
-/* Hero Section */
+@import "/src/app/colors.less";
+
 .hero {
   background: url("https://source.unsplash.com/random/1600x900") no-repeat
     center center/cover;
@@ -11,7 +12,7 @@
 }
 
 .hero-content {
-  background: rgba(0, 0, 0, 0.5);
+  background: @secondary-color;
   padding: 50px;
   border-radius: 10px;
 }
@@ -42,7 +43,7 @@
 .feature i {
   font-size: 4rem;
   margin-bottom: 20px;
-  color: #007bff;
+  color: @tertiary-color;
 }
 
 .feature h2 {
@@ -59,25 +60,11 @@
 .cta {
   text-align: center;
   padding: 50px 20px;
-  background-color: #007bff;
+  background-color: @secondary-color;
   color: #fff;
 }
 
 .cta h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-}
-
-.cta .btn-secondary {
-  background-color: #fff;
-  color: #007bff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-.cta .btn-secondary:hover {
-  background-color: #f1f1f1;
 }
