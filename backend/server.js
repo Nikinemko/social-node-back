@@ -1,9 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2");
+const cors = require("cors");
 const userRoutes = require("./routes/users");
 
 const app = express();
+
+// Use CORS middleware
+app.use(cors());
 
 app.use(bodyParser.json());
 
@@ -18,10 +22,10 @@ const db = mysql.createConnection({
 // Connect to MySQL
 db.connect((err) => {
   if (err) {
-    console.error("Error connecting: " + err.stack);
+    console.error("error connecting: " + err.stack);
     return;
   }
-  console.log("Connected as id " + db.threadId);
+  console.log("connected as id " + db.threadId);
 });
 
 app.use((req, res, next) => {

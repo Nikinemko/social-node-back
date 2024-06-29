@@ -29,19 +29,22 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log('onSubmit');
     this.submitted = true;
 
     if (this.registrationForm?.invalid) {
       return;
     }
 
-    this.userService.register(this.registrationForm.value).subscribe(
-      (response) => {
-        console.log('Registration successful', response);
-      },
-      (error) => {
-        console.error('Registration error', error);
-      }
-    );
+    if (this.registrationForm.valid) {
+      this.userService.register(this.registrationForm.value).subscribe(
+        (response) => {
+          console.log('Registration successful', response);
+        },
+        (error) => {
+          console.error('Registration error', error);
+        }
+      );
+    }
   }
 }
