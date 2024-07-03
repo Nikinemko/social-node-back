@@ -2,13 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2");
 const cors = require("cors");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
 const userRoutes = require("./routes/users");
 
 const app = express();
 
 // Use CORS middleware
 app.use(cors());
-
 app.use(bodyParser.json());
 
 // Create a connection to the database
@@ -32,7 +34,6 @@ app.use((req, res, next) => {
   req.db = db;
   next();
 });
-
 app.use("/api/users", userRoutes);
 
 const PORT = process.env.PORT || 5000;
