@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LoginComponent } from './login/login.component';
     HomepageComponent,
     RegistrationComponent,
     LoginComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

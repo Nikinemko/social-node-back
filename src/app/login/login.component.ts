@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -10,7 +11,11 @@ import { UserService } from '../services/user.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -24,8 +29,8 @@ export class LoginComponent implements OnInit {
       this.userService.login(this.loginForm.value).subscribe(
         (response) => {
           console.log('Login successful', response);
-          // Save the token in local storage or handle it as needed
-          localStorage.setItem('token', response.token);
+          this.userService.saveToken(response.token);
+          this.router.navigate(['/profile']);
         },
         (error) => {
           console.error('Login error', error);

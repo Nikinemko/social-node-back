@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const auth = require("../middleware/auth");
 
 const router = express.Router();
 
@@ -97,6 +98,27 @@ router.post("/login", (req, res) => {
           res.json({ token });
         }
       );
+    }
+  );
+});
+
+// Profile route (protected)
+router.get("/profile", auth, (req, res) => {
+  const db = req.db;
+  db.query(
+    "SELECT id, username, email FROM users WHERE id = ?",
+    [req.user.id],
+    (error, results) => {
+      if (error) {
+        console.error(error.message);
+        return res.status(500).send("Server error");
+      }
+
+      if (results.length === 0) {
+        return res.status(404).json({ msg: "User not found" });
+      }
+
+      res.json(results[0]);
     }
   );
 });
