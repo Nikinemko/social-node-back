@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./homepage.component.less'],
 })
 export class HomepageComponent {
-  title: String = 'Node-back';
+  title: String = 'Cubecaf';
 }

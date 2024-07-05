@@ -1,19 +1,29 @@
 @import "/src/app/colors.less";
+@import "/src/app//fonts.less";
 
 header {
   background-color: @primary-color;
   border-bottom: 1px solid #ddd;
   border-radius: 0px 0px 25px 25px;
   a {
-    color: #fff;
+    color: @secondary-color;
+    font-weight: @semi-bold-font-weight;
+    font-size: @big-font-size;
     text-decoration: none;
+  }
+  .logo-container {
+    display: flex;
+    .logo {
+      max-height: 155px;
+      width: auto;
+    }
   }
 
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 5rem;
 
     .navbar-item {
       margin-right: 1rem;

@@ -1,27 +1,20 @@
 <header>
   <nav class="navbar">
     <div class="navbar-brand">
-      <a routerLink="/" class="navbar-item">SocialMediaApp</a>
+      <a routerLink="/" class="logo-container">
+        <img
+          class="logo"
+          src="../../../assets/Images/logo2_transparent_cropped.png"
+          alt=""
+        />
+      </a>
     </div>
     <div class="navbar-menu">
       <div class="navbar-start">
         <a routerLink="/" class="navbar-item">Home</a>
         <a routerLink="/profile" class="navbar-item">Profile</a>
-        <a routerLink="/messages" class="navbar-item">Messages</a>
+        <a routerLink="/login" class="navbar-item">Login</a>
         <a routerLink="/registration" class="navbar-item">Registration</a>
-      </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <input type="text" placeholder="Search..." class="input" />
-        </div>
-        <div class="navbar-item">
-          <button routerLink="/login" class="button is-primary">Log In</button>
-        </div>
-        <div class="navbar-item">
-          <button routerLink="/registration" class="button is-light">
-            Sign Up
-          </button>
-        </div>
       </div>
     </div>
   </nav>
