@@ -2,8 +2,40 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require("../middleware/auth");
+const multer = require("multer");
+const authenticateToken = require("../middleware/auth");
+const path = require("path");
+const { body, validationResult } = require("express-validator");
 
 const router = express.Router();
+
+// Setting up Multer for file upload
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+// Route to upload profile picture
+
+router.post(
+  "/profile-picture",
+  authenticateToken,
+  upload.single("profilePic"),
+  (req, res) => {
+    const userId = req.user.id;
+    const profilePic = req.file.buffer;
+    const db = req.db;
+
+    console.log("Received file:", req.file);
+
+    const sql = "UPDATE users SET profilePic = ? WHERE id = ?";
+    db.query(sql, [profilePic, userId], (err, result) => {
+      if (err) {
+        console.error("Error updating profile picture:", err);
+        return res.status(500).send("Error updating profile picture");
+      }
+      res.send("Profile picture updated successfully");
+    });
+  }
+);
 
 // Register user
 router.post("/register", async (req, res) => {
@@ -39,7 +71,7 @@ router.post("/register", async (req, res) => {
 
             jwt.sign(
               payload,
-              "secretToken", // Replace with a secure secret in a real application
+              "secretToken", // Replace with a secure secret later
               { expiresIn: 3600 },
               (err, token) => {
                 if (err) throw err;
@@ -91,7 +123,7 @@ router.post("/login", (req, res) => {
 
       jwt.sign(
         payload,
-        "secretToken", // Replace with a secure secret in a real application
+        "secretToken", // Replace with a secure later
         { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;

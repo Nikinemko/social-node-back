@@ -13,6 +13,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     LoginComponent,
     ProfileComponent,
     PageNotFoundComponent,
+    ProfilePictureComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

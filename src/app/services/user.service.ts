@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -40,5 +41,29 @@ export class UserService {
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);
+  }
+
+  // Files
+
+  uploadProfilePicture(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    console.log('FORM DATA BEFORE:', formData);
+    formData.append('profilePic', file, file.name);
+    const headers = new HttpHeaders({
+      'x-auth-token': this.getToken(),
+    });
+    console.log(formData);
+    console.log(file);
+    console.log(file.name);
+    return this.http
+      .post('http://localhost:5000/api/users/profile-picture', formData, {
+        headers,
+      })
+      .pipe(
+        catchError((error) => {
+          console.error('Error uploading profile picture:', error);
+          return throwError('Something went wrong with the file upload');
+        })
+      );
   }
 }

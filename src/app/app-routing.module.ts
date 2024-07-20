@@ -5,6 +5,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './auth.guard';
 
@@ -22,6 +23,10 @@ const routes: Routes = [
     component: LoginComponent,
   },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'profile-picture',
+    component: ProfilePictureComponent,
+  },
   {
     path: '**',
     component: PageNotFoundComponent,

@@ -1,0 +1,8 @@
+<div class="upload-container" *ngIf="userService.isLoggedIn()">
+  <h2>Upload Profile Picture</h2>
+  <input type="file" (change)="onFileSelected($event)" />
+  <button mat-raised-button (click)="onUpload()">Upload</button>
+</div>
+<div *ngIf="!userService.isLoggedIn()">
+  <p>Please log in to upload a profile picture.</p>
+</div>
