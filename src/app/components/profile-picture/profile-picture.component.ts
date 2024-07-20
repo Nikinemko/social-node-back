@@ -9,11 +9,18 @@ import { Router } from '@angular/router';
 })
 export class ProfilePictureComponent {
   selectedFile: File | null = null;
+  selectedFileName: string | null | undefined = null;
 
   constructor(protected userService: UserService) {}
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
+    this.selectedFileName = this.selectedFile?.name;
+  }
+
+  triggerFileInput(): void {
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    fileInput.click();
   }
 
   onUpload(): void {

@@ -1,4 +1,16 @@
-<div *ngIf="profile">
-  <h2>{{ profile.username }}'s Profile</h2>
-  <p><strong>Email:</strong> {{ profile.email }}</p>
+<div *ngIf="profile" class="profile-container">
+  <div class="profile-left">
+    <h2>Welcome {{ profile.username }}!</h2>
+    <p><strong>Email:</strong> {{ profile.email }}</p>
+  </div>
+  <div *ngIf="profilePictureUrl; else noPicture" class="profile-right">
+    <img
+      [src]="profilePictureUrl"
+      alt="Profile Picture"
+      class="profile-picture"
+    />
+  </div>
+  <ng-template #noPicture>
+    <app-profile-picture></app-profile-picture>
+  </ng-template>
 </div>

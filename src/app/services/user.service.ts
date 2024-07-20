@@ -43,7 +43,7 @@ export class UserService {
     localStorage.removeItem(this.tokenKey);
   }
 
-  // Files
+  // Files SET
 
   uploadProfilePicture(file: File): Observable<any> {
     const formData: FormData = new FormData();
@@ -63,6 +63,28 @@ export class UserService {
         catchError((error) => {
           console.error('Error uploading profile picture:', error);
           return throwError('Something went wrong with the file upload');
+        })
+      );
+  }
+
+  // Files GET
+
+  getProfilePicture(): Observable<Blob> {
+    const headers = new HttpHeaders({
+      'x-auth-token': this.getToken(),
+    });
+
+    return this.http
+      .get('http://localhost:5000/api/users/profile-picture', {
+        headers,
+        responseType: 'blob',
+      })
+      .pipe(
+        catchError((error) => {
+          console.error('Error retrieving profile picture:', error);
+          return throwError(
+            'Something went wrong while retrieving the profile picture'
+          );
         })
       );
   }

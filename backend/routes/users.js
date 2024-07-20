@@ -13,6 +13,27 @@ const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
+// Route to get profile picture
+
+router.get("/profile-picture", authenticateToken, (req, res) => {
+  const userId = req.user.id;
+  const sql = "SELECT profilePic FROM users WHERE id = ?";
+  const db = req.db;
+
+  db.query(sql, [userId], (err, result) => {
+    if (err) {
+      console.error("Error retrieving profile picture:", err);
+      return res.status(500).send("Error retrieving profile picture");
+    }
+    if (result.length > 0 && result[0].profilePic) {
+      res.set("Content-Type", "image/jpeg"); // Set appropriate content type
+      res.send(result[0].profilePic); // Send the binary data as the response
+    } else {
+      res.status(404).send("Profile picture not found");
+    }
+  });
+});
+
 // Route to upload profile picture
 
 router.post(
