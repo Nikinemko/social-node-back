@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./profile.component.less'],
 })
 export class ProfileComponent implements OnInit {
-  profile: any;
+  profile: any = null;
   profilePictureUrl: SafeUrl | null = null;
 
   constructor(
@@ -17,6 +17,8 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.userService.isLoggedIn());
+
     this.userService.getProfile().subscribe(
       (data) => {
         console.log(data);

@@ -12,9 +12,19 @@
     <div class="navbar-menu">
       <div class="navbar-start">
         <a routerLink="/" class="navbar-item">Home</a>
-        <a routerLink="/profile" class="navbar-item">Profile</a>
-        <a routerLink="/login" class="navbar-item">Login</a>
-        <a routerLink="/registration" class="navbar-item">Registration</a>
+        <a *ngIf="isLoggedIn()" routerLink="/profile" class="navbar-item"
+          >Profile</a
+        >
+        <a *ngIf="!isLoggedIn()" routerLink="/login" class="navbar-item"
+          >Login</a
+        >
+        <a *ngIf="!isLoggedIn()" routerLink="/registration" class="navbar-item"
+          >Registration</a
+        >
+        <a *ngIf="isLoggedIn()" routerLink="/messages" class="navbar-item"
+          >Messages</a
+        >
+        <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
       </div>
     </div>
   </nav>

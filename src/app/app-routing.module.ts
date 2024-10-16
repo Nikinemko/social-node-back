@@ -8,6 +8,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './auth.guard';
+import { NoAuthGuard } from './noauth.guard';
 
 const routes: Routes = [
   {
@@ -17,10 +18,12 @@ const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [NoAuthGuard],
   },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
