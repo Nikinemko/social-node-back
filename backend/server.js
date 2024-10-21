@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const userRoutes = require("./routes/users");
+const postRoutes = require("./routes/posts");
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/api/users", userRoutes);
+app.use("/api/posts", postRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

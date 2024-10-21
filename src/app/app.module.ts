@@ -15,6 +15,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { UserService } from './services/user.service';
+import { CreatePostComponent } from './components/create-post/create-post.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { UserService } from './services/user.service';
     ProfileComponent,
     PageNotFoundComponent,
     ProfilePictureComponent,
+    CreatePostComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,

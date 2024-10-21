@@ -1,0 +1,8 @@
+<div class="post" *ngFor="let post of posts">
+  <h3>{{ post.author }}</h3>
+  <p>{{ post.text }}</p>
+  <div *ngIf="post.image">
+    <img [src]="getImageUrl(post.image)" alt="Post image" />
+  </div>
+  <small>Posted on: {{ post.date | date }}</small>
+</div>

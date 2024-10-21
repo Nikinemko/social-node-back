@@ -24,7 +24,13 @@
         <a *ngIf="isLoggedIn()" routerLink="/messages" class="navbar-item"
           >Messages</a
         >
-        <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+        <a
+          *ngIf="isLoggedIn()"
+          routerLink="/login"
+          (click)="logout()"
+          class="navbar-item"
+          >Logout</a
+        >
       </div>
     </div>
   </nav>

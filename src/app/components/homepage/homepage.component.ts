@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class HomepageComponent {
   title: String = 'Cubecaf';
+
+  constructor(private postService: PostService) {}
 }
