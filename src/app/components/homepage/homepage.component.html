@@ -1,5 +1,5 @@
-<div class="hero">
-  <div class="hero-content">
+<div *ngIf="!logged" class="main">
+  <div class="main-content">
     <h1>Welcome to {{ title }}</h1>
     <p>Connect with friends and the world around you.</p>
     <button class="btn btn-primary" routerLink="/registration">
@@ -7,6 +7,8 @@
     </button>
   </div>
 </div>
+
+<app-posts *ngIf="logged" class="posts-container"></app-posts>
 
 <div class="features">
   <div class="feature">
@@ -26,11 +28,7 @@
   </div>
 </div>
 
-<div>
-  <app-posts></app-posts>
-</div>
-
-<div class="cta">
+<div *ngIf="!logged" class="cta">
   <h2>Join Us Today!</h2>
-  <button class="btn btn-secondary">Sign Up</button>
+  <button class="btn btn-secondary" routerLink="/registration">Sign Up</button>
 </div>

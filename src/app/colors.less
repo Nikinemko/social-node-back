@@ -2,3 +2,23 @@
 @primary-color: #f3f3f3;
 @secondary-color: #303841;
 @tertiary-color: #ff0000;
+@error-message: #b80000;
+
+.background-grad-animation {
+  background: linear-gradient(135deg, #303841, #8f8e8e, #303841);
+  background-size: 400% 400%;
+  animation: gradient-animation 5s ease infinite;
+  transition: transform 1s ease;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

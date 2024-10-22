@@ -1,8 +1,11 @@
 <div class="post" *ngFor="let post of posts">
-  <h3>{{ post.author }}</h3>
-  <p>{{ post.text }}</p>
-  <div *ngIf="post.image">
-    <img [src]="getImageUrl(post.image)" alt="Post image" />
+  <div class="post-header">
+    <h2>{{ post.author }}</h2>
+    <div class="date">Posted on: {{ post.date | date }}</div>
   </div>
-  <small>Posted on: {{ post.date | date }}</small>
+
+  <p class="post-text">{{ post.text }}</p>
+  <div *ngIf="post.image">
+    <img [src]="'data:image/jpeg;base64,' + post.image" alt="Post Image" />
+  </div>
 </div>

@@ -9,7 +9,10 @@ const { body, validationResult } = require("express-validator");
 
 const router = express.Router();
 const storage = multer.memoryStorage(); // Store image in memory
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
 
 router.post("/create", auth, upload.single("image"), (req, res) => {
   const { text } = req.body;
@@ -24,7 +27,7 @@ router.post("/create", auth, upload.single("image"), (req, res) => {
   db.query(query, [imageBuffer, text, author], (err, results) => {
     if (err) {
       console.error(err);
-      return res.status(500).json({ message: "Error creating post" });
+      return res.status(500).json({ message: "Error creating post back" });
     }
     res
       .status(201)
