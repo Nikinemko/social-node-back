@@ -19,25 +19,16 @@ export class CreatePostComponent {
 
   onSubmit() {
     const formData = new FormData();
-
-    // Clear previous error message
     this.errorMessage = '';
-
-    // Check if the post text is not empty
     if (!this.post.text.trim()) {
       this.errorMessage = 'Post text cannot be empty';
       return;
     }
 
-    // Check if a file is selected
     if (!this.post.image) {
       this.errorMessage = 'You must upload an image';
       return;
     }
-
-    // Proceed with the post creation logic
-    console.log('Form submitted', this.post, this.post.image);
-    // Add your post submission logic here (e.g., HTTP request)
 
     if (this.post.image) {
       formData.append('image', this.post.image);

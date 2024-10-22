@@ -7,7 +7,7 @@ module.exports = function (req, res, next) {
   }
 
   try {
-    const decoded = jwt.verify(token, "secretToken"); // Replace 'secretToken' with your actual secret
+    const decoded = jwt.verify(token, "secretToken"); // This is test project with secretToken here
     req.user = decoded.user;
     next();
   } catch (err) {

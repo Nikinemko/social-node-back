@@ -6,7 +6,7 @@
     class="file-input"
   />
   <button (click)="triggerFileInput()">Upload Profile Picture</button>
-  <!-- Display the selected file name -->
+
   <p *ngIf="selectedFileName">{{ selectedFileName }}</p>
 
   <button mat-raised-button (click)="onUpload()">Upload</button>

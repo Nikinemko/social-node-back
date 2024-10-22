@@ -7,7 +7,7 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./posts.component.less'],
 })
 export class PostsComponent {
-  posts: any[] = []; // Array to hold posts
+  posts: any[] = [];
 
   constructor(private postService: PostService) {}
 
@@ -15,11 +15,10 @@ export class PostsComponent {
     this.loadPosts();
   }
 
-  // Fetch posts from the backend
   loadPosts() {
     this.postService.getPosts().subscribe(
       (response) => {
-        this.posts = response; // Store posts in the component
+        this.posts = response;
       },
       (error) => {
         console.error('Error fetching posts:', error);

@@ -92,7 +92,7 @@ router.post("/register", async (req, res) => {
 
             jwt.sign(
               payload,
-              "secretToken", // Replace with a secure secret later
+              "secretToken",
               { expiresIn: 3600 },
               (err, token) => {
                 if (err) throw err;
@@ -104,9 +104,7 @@ router.post("/register", async (req, res) => {
       }
     );
   } catch (err) {
-    console.log("///////////////////////////////");
     console.error(err.message);
-    console.log("///////////////////////////////");
     res.status(500).send("Server error");
   }
 });
@@ -142,15 +140,10 @@ router.post("/login", (req, res) => {
         },
       };
 
-      jwt.sign(
-        payload,
-        "secretToken", // Replace with a secure later
-        { expiresIn: 3600 },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+      jwt.sign(payload, "secretToken", { expiresIn: 3600 }, (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      });
     }
   );
 });
